@@ -8,11 +8,6 @@ Based on **[Arise - RTM](https://github.com/Amethxst/Arise-RTM-GTAV-PS4)** by **
 
 It includes the **Names** tab and ps4debug-NG v1.3.4 (it adds firmware 14.02). What is different from Arise - RTM is listed in [CHANGELOG.md](CHANGELOG.md).
 
-![The main tab](screenshots/main.png)
-
-![The names tab](screenshots/names.png)
-
-![The debug tab](screenshots/debug.png)
 
 ## Features
 
