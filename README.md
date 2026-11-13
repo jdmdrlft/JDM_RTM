@@ -1,6 +1,6 @@
 # JDM - RTM
 
-Outfit editor, fast run unlock and custom K/D for **GTA V Online 1.57 on PS4**, run from your PC.
+Outfit and name editor, fast run unlock and custom K/D for **GTA V Online 1.57 on PS4**, run from your PC.
 
 Made by **jdm_drlft**. Version **1.1**.
 
@@ -26,18 +26,18 @@ It includes the **Names** tab and ps4debug-NG v1.3.4 (it adds firmware 14.02). W
 
 ## Requirements
 
-- PS4 on **firmware 14.00**, jailbroken with GoldHEN.
+- PS4 on **firmware 14.00/14.02**, jailbroken with GoldHEN.
 - GTA V **1.57**, EU (`CUSA00411`) or US (`CUSA00419`).
 - A Windows PC on the same network as the console, with .NET Framework 4.8.1.
 
-Tested on firmware 14.00 with GTA V 1.57 (EU).
+Tested on firmware 14.02 with GTA V 1.57 (EU).
 
-Firmware **14.02**: `ps4debug.bin` v1.3.4 adds support for it, but this has **not been tested on a console**, and there is no official jailbreak or GoldHEN for 14.02: this tool does not provide one. A ps4debug that is already running is not replaced, so restart the console and jailbreak it again after updating `ps4debug.bin`.
+Firmware **14.02**: `ps4debug.bin` v1.3.4 adds support for it. A ps4debug that is already running is not replaced, so restart the console and jailbreak it again after updating `ps4debug.bin`.
 
 ## How to use
 
-1. Make sure the PS4 is on firmware **14.00**.
-2. On the console, open https://well0nez.github.io/afterglow-web/ and jailbreak it.
+1. Make sure the PS4 is on firmware **14.02**.
+2. On the console, open https://webkitty.arabpixel.net/ and jailbreak it.
 3. In GoldHEN, open **Server Settings** and enable **FTP** and **Payload Loader**.
 4. Start GTA V.
 5. Download `JDM-RTM-GTAV-PS4.zip` from the [Releases](../../releases) page and unzip it. Open `JDM - RTM.exe`, type the IP address of your PS4, then press **1. CONNECT PS4** and **2. CONNECT GTAV**.
