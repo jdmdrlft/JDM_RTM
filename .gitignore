@@ -1,0 +1,25 @@
+# Build output
+bin/
+obj/
+.vs/
+*.user
+*.exe
+
+# Files the tool creates next to the exe while it runs (they can hold your console IP)
+connection.txt
+rtm.log
+ui.txt
+signatures.ini
+names_rtm.ini
+names_rtm_memory.ini
+name_stats.old.ini
+name_stats_found.txt
+stats_code_dump.txt
+
+# Images of the game (symbols, image tags): they are not yours to redistribute. Only their README is kept.
+symbols/*
+!symbols/README.txt
+img/*
+!img/README.txt
+
+.DS_Store
