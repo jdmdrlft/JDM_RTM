@@ -2,7 +2,7 @@
 
 Outfit and name editor, fast run unlock and custom K/D for **GTA V Online 1.57 on PS4**, run from your PC.
 
-Made by **jdm_drlft**. Version **1.1**.
+Made by **jdm_drlft**. Version **1.3**.
 
 Based on **[Arise - RTM](https://github.com/Amethxst/Arise-RTM-GTAV-PS4)** by **yAmethxst** (v2.0.0, [release](https://github.com/Amethxst/Arise-RTM-GTAV-PS4/releases/tag/v2.0.0)), used under its MIT license: see `LICENSE` and `CREDITS.txt`. Full thanks to him for the tool this one grows from: [GitHub](https://github.com/Amethxst/Arise-RTM-GTAV-PS4) · [X](https://x.com/yAmethxst) · [Discord](https://amethxst.dev/discord) · [amethxst.dev](https://amethxst.dev).
 
