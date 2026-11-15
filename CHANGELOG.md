@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.5 - JDM - RTM
+
+### Added
+- **Garage Editor tab** (made by jdm_drlft): it edits the cars saved in your garages **without taking them out**. It reads your garages and cars by itself the first time you open it (**Refresh** reads them again) and chooses the first garage. The first list shows your garages (apartments, offices, clubhouse, hangar, arcade, auto shop, agency, mansions...) with the cars in each one; the second list shows the cars of the garage (model name, plate and slot). The garage of each car comes from the garage map of the game, read as data, and the table of garages of the Seren plugin. Choose a car and the menu of the Vehicle tab appears, with the options that can be edited in a saved car: plate style and text, primary, secondary, pearlescent, rim, interior and dashboard colours, custom primary RGB, neon colour, window tint, front wheel, headlights, turbo, tyre smoke with its colour, and the mods of the model: engine, brakes, transmission, suspension, armor, horn, **livery** and the cosmetic ones (spoilers, bumpers, skirts, exhaust, grille, hood, fenders, roof, trims...). The saved car is read and written in the game's memory, so no game function is run and the car does not need to exist in the world.
+  - How many options a model has comes from its mod kit (`vehicleModKits.json` of DurtyFree, built in) or from what the program learned when you read that model in the Vehicle tab (`mod_counts.ini`). The **names of the liveries** are learned from the game the first time you read a car of that model with **Read vehicle** (`livery_names.ini`); until then they show as Livery 1, Livery 2...
+  - **Apply changes** asks once, names the car and lists the changes, keeps a copy of the slot in memory and in the `garage_backups` folder, writes, reads the result and asks the game to save (**Save after write**). **Undo garage** puts the slot back as it was before the last garage edit.
+- **Add a vehicle to your garage** (Vehicle tab, category **Vehicle**): choose any model of the game (type to search) and a garage, and the program creates a new saved car in a free slot of your character and puts it in the first free space of that garage. It does the same steps as the Seren plugin: the cells of the new slot, the model stat of the slot (`MPx_MPSV_MODEL_n`) and the entry of the garage map (the global plus its three packed stats). It refuses a model the game does not have, checks that the character of the toolbar is the one you are playing, reads every part back and takes everything back if one part is not kept. **Undo last add** removes the car. Leave and enter the garage again, or change session, to see it.
+- **Read vehicle** also reads the number of options of every mod type and the names of the liveries of the car, and keeps them for the Garage Editor.
+- **Dump slot** (Garage Slot category) compares the real values of the car with the cells of its slot: the known cells, the mods one by one (the value of the car next to the cell 10 + mod type), the turbo, the tyre smoke and the xenon, and which cells hold the other values. It changes nothing.
+- Files the program creates next to it: `mod_counts.ini`, `livery_names.ini` and the `garage_backups` folder.
+
+### Changed
+- Tabs: Main, Names, **Vehicle**, **Garage Editor**, Debug. The window title says v1.5.
+- **Save to garage** writes more cells of the slot of the car: interior and dashboard colours, headlights (xenon and colour), turbo, tyre smoke with its colour, and engine, brakes, transmission, suspension, armor and horn, besides the ones of 1.4. Taking off the custom primary RGB also clears its switch in the slot (bit 9 of the switches cell), because with the switch on the game ignores the primary colour number. A cell is written when it holds a plain number (it no longer has to hold what the car had when you read it), and every write is read back.
+- The program is bigger (about 2.9 MB): the names of the car models, the mod kits of every model and the tables of the garages are inside `JDM - RTM.exe`.
+- `README.md`, `HOW_TO_USE.md` and `CREDITS.txt` have the new material and the credits for the data used (DurtyFree, Seren).
+
+### Removed
+- The **Auto test** of the Garage Slot category: it set every mod of the car to its maximum at once and could crash the game. **Dump slot** and **Snapshot** + **Compare** are still there.
+
+### Things to know
+- What is saved in the garage is saved in your account, and the vehicles you add are saved there too. A car that cannot normally be owned, or one that does not suit the garage, can break the garage or make your online account be flagged. Try everything on a character and cars you can afford to lose.
+- The list of garages has every garage of the game: the program does not know which ones you own. Choose one you own when you add a vehicle.
+- Found with Dump slot and Compare by jdm_drlft on firmware 14.02, GTA V 1.57 (EU): the cells of the mods (10 + type, index + 1), the xenon (colour + 2), the interior (cell 97), the dashboard (cell 99) and the tyre smoke colour (cells 62-64). **Not tried on a console yet**: adding a vehicle, and the cosmetic mods and the livery of a saved car (they use the same rule as the engine and the other mods; Dump slot checks it).
+- Not editable in a saved car yet: the neon sides, the secondary RGB, the rear rims and the older kind of livery that some vehicles use.
+
+### Files of the Arise code that were touched
+`MainForm.cs` (the Garage Editor tab and the title), the project file (version), `README.md`, `HOW_TO_USE.md`, `CREDITS.txt` and this file. Changed: `Ui/VehiclePanel.cs`. New files: `Vehicle/VehicleNames.cs`, `Vehicle/GarageTables.cs` (with the packed stats of the garage map), `Vehicle/ModKitData.cs`, `Vehicle/ModCountStore.cs` and `Vehicle/LiveryNameStore.cs`.
+
 ## 1.4 - JDM - RTM
 
 ### Added
@@ -22,8 +51,9 @@
 - `README.md` and `CREDITS.txt` have the new material and the credits for the images (XB36Hazard) and the data used.
 
 ### Things to know
-- The changes of the Vehicle tab are seen by the other players of the session. What is saved in the garage is saved in your account.
+- The changes of the Vehicle tab are seen by the other players of the session. What is saved in the garage is saved in your account. Try everything on a car you do not mind losing.
 - Chameleon paints belong to the Expanded and Enhanced version of the game. On PS4 1.57 they may not exist and the car can look wrong: try them first without Save to garage.
+- Not every option of the garage slot is mapped yet (interior, dashboard, smoke, mods and the switches of neon, xenon and turbo are not). Those are applied to the car and the game keeps them when it saves the car.
 - Tested by jdm_drlft on firmware 14.02 with GTA V 1.57 (EU).
 
 ### Files of the Arise code that were touched
