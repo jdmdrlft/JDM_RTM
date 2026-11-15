@@ -1,5 +1,5 @@
 JDM - RTM
-Outfits editor, fast run, custom K/D and name editor for GTA V 1.57 on PS4 (GoldHEN).
+Outfits editor, fast run, custom K/D, name editor and vehicle editor for GTA V 1.57 on PS4 (GoldHEN).
 
 Made by jdm_drlft
 
@@ -18,6 +18,10 @@ Names tab
   It uses the name data of the guide at https://amethxst.dev/gta-name (rules and the HUD colour table) and the list
   of image tags "GTA V PC Modded Outfit Name Image Tags" compiled by Max1382 (https://github.com/Max1382/GTA-V-Modded-Outfit-Names-,
   CC BY 4.0, https://creativecommons.org/licenses/by/4.0/; only the image sources of its examples are used).
+
+Vehicle tab
+  By jdm_drlft (Ui/VehiclePanel.cs and the Vehicle folder, under the MIT License). It edits the look of the car you drive and what the garage
+  keeps of it. It would not exist without the work and the data of the people below; see "Images and data of the Vehicle tab".
 
 License
   The code of this tool is under the MIT License (see LICENSE). If you reuse it, keep the copyright notice.
@@ -44,6 +48,33 @@ GoldHEN
 afterglow
   The PS4 kernel exploit used to jailbreak the console (firmware 14.00), by well0nez/m0zz:
   https://well0nez.github.io/afterglow-web/
+
+Images and data of the Vehicle tab
+----------------------------------
+
+Pictures (chameleon paints, wheels and number plates)
+  By XB36Hazard, author of the GTA V Save Editor. They are cropped from screenshots of the galleries of that editor, which is also where the
+  names and the groups of the colours (Chrome, Hidden, Matte, Metallic, Metals, Other, Rim, Util, Worn), the names of the wheels and the order of
+  the plates come from. They are not made by jdm_drlft. They were cropped, and from the chameleon pictures the badge of the editor and its faint
+  watermark text were removed. They are inside JDM - RTM.exe (resource wheels.zip) and are used only as pictures of the options. All rights on
+  them belong to their author; if he asks for them to be removed, they will be.
+
+Table of native addresses (Vehicle/NativeAddresses.cs)
+  Generated from the file lua/natives.lua of the Velora menu for PS4: native names and their addresses in GTA V 1.57, relative to the
+  image base 0x400000. It was checked against the console: the 7 stat handlers of the profile match, and most of its addresses are natives
+  registered by the game. It has a few wrong entries (for example GET_VEHICLE_NUMBER_PLATE_TEXT), which the tool does not use.
+
+Garage slot layout
+  How the personal vehicles are found in the script globals (the table of global pages, the list of known array starts, the cell of the model
+  and the cell of the plate) was learnt by reading the code of the Seren plugin (Serendipity GTAO Mod Menu). No code of it is included. The rest
+  of the cells (plate style, colours, wheels, tint, RGB values) were found with the Garage Slot tool of this program.
+
+Colours
+  Names, order and RGB values of the 161 base colours: the vehicleColors.json of https://github.com/DurtyFree/gta-v-data-dumps (it keeps its
+  own terms). Chameleon paint numbers (161-222): GTA Wiki, "Vehicle Customization in GTA V / Respray Colors".
+
+Horns and plates
+  Indexes and names of the first 35 horns: RAGE Multiplayer Wiki, "Vehicle Mods" (https://wiki.rage.mp/wiki/Vehicle_Mods).
 
 Trademarks
   Grand Theft Auto, GTA, Rockstar Games and PlayStation are trademarks of their respective owners.
