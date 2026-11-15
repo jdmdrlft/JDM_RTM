@@ -1,12 +1,12 @@
 # JDM - RTM
 
-Outfit and name editor, fast run unlock and custom K/D for **GTA V Online 1.57 on PS4**, run from your PC.
+Outfit, name and vehicle editor, fast run unlock and custom K/D for **GTA V Online 1.57 on PS4**, run from your PC.
 
-Made by **jdm_drlft**. Version **1.3**.
+Made by **jdm_drlft**. Version **1.4**.
 
 Based on **[Arise - RTM](https://github.com/Amethxst/Arise-RTM-GTAV-PS4)** by **yAmethxst** (v2.0.0, [release](https://github.com/Amethxst/Arise-RTM-GTAV-PS4/releases/tag/v2.0.0)), used under its MIT license: see `LICENSE` and `CREDITS.txt`. Full thanks to him for the tool this one grows from: [GitHub](https://github.com/Amethxst/Arise-RTM-GTAV-PS4) · [X](https://x.com/yAmethxst) · [Discord](https://amethxst.dev/discord) · [amethxst.dev](https://amethxst.dev).
 
-It includes the **Names** tab and ps4debug-NG v1.3.4 (it adds firmware 14.02). What is different from Arise - RTM is listed in [CHANGELOG.md](CHANGELOG.md).
+It includes the **Names** tab, the **Vehicle** tab and ps4debug-NG v1.3.4 (it adds firmware 14.02). What is different from Arise - RTM is listed in [CHANGELOG.md](CHANGELOG.md), and there is a step by step guide in [HOW_TO_USE.md](HOW_TO_USE.md).
 
 
 ## Features
@@ -16,7 +16,8 @@ It includes the **Names** tab and ps4debug-NG v1.3.4 (it adds firmware 14.02). W
 - **Teleport**: a button that moves your character straight to the clothing shop.
 - **Fast run**: unlocks the permanent fast run on the character you choose.
 - **Custom K/D**: set the K/D ratio, or the kills and deaths on their own.
-- **Names tab**: reads and writes the names of your CEO, office, MC club, clubhouse, yacht, nightclub, acid lab, acid lab product and mansion pets. It has colour, bold, italic, size and symbol buttons with a live preview that follows the game's rules, and shows how many bytes the name uses (up to 41). The new name is saved in your game; **only you see it**: other players keep seeing the name approved by Rockstar. It connects by itself when you press **2. CONNECT GTAV**, always uses the **Stats character** (Character 1 or 2) chosen in the toolbar at the top (it has no character buttons of its own: until you choose one it asks you to), and writes its messages in this window's log (lines starting with `Names:`).
+- **Names tab**: reads and writes the names of your organization, office, MC club, clubhouse, yacht, nightclub, acid lab, acid lab product and mansion pets. It has colour, bold, italic, size and symbol buttons with a live preview that follows the game's rules, and shows how many bytes the name uses (up to 41). The new name is saved in your game; **only you see it**: other players keep seeing the name approved by Rockstar. It connects by itself when you press **2. CONNECT GTAV**, always uses the **Stats character** (Character 1 or 2) chosen in the toolbar at the top (it has no character buttons of its own: until you choose one it asks you to), and writes its messages in this window's log (lines starting with `Names:`).
+- **Vehicle tab**: edits the look of the car you drive (or the last car you drove) with galleries and one **Apply changes** button. Paint (161 colours grouped like the GTA V Save Editor, 62 chameleon paints, custom RGB), neon, xenon, tire smoke (with Patriotic), window tint, wheels of 10 types with pictures, 13 plate styles with pictures, plate text of any character (with a **GHOST PLATE** button), horns and the other mods. **Save to garage** makes the game keep the look and writes the plate, colours and wheels straight into the slot of the car in your garage. See [HOW_TO_USE.md](HOW_TO_USE.md) and the section below.
 - **Debug tab** (advanced): write or read any stat by name, set a packed value by index, or run a list of writes from a `.txt` file on your PC. Nothing is bundled: the tool writes only what you type or load. See below.
 
 ## Requirements
@@ -38,6 +39,7 @@ Firmware **14.02**: `ps4debug.bin` v1.3.4 adds support for it. A ps4debug that i
 5. Download `JDM-RTM-GTAV-PS4.zip` from the [Releases](../../releases) page and unzip it. Open `JDM - RTM.exe`, type the IP address of your PS4, then press **1. CONNECT PS4** and **2. CONNECT GTAV**.
 6. Go online, then use the tool. If the outfit list is empty, press **Refresh**.
 7. For names, choose **Character 1 or 2** in the toolbar, then open the **Names** tab. Pick a name in the list, type the new name (the buttons insert colours, styles, sizes and symbols) and press **WRITE & SAVE**. Wait for the bar to finish and for the message "is set and saved" before changing session.
+8. For vehicles, open the **Vehicle** tab with a car of yours out (you can be on foot next to it), choose what you want in the categories and press **Apply changes**. The whole guide is in [HOW_TO_USE.md](HOW_TO_USE.md).
 
 ### Notes
 
@@ -48,6 +50,16 @@ Firmware **14.02**: `ps4debug.bin` v1.3.4 adds support for it. A ps4debug that i
 - To look at the whole window without a console, start it with `--preview`. Nothing can be written in that mode.
 - The FTP port is used only to read the game version from the console, so the tool can check that it is 1.57.
 - Use it at your own risk.
+
+## Vehicle tab
+
+Categories on the left, a gallery on the right, and the result of every action in the box below it. **Read vehicle** loads the car (the tab does it by itself when you open it), you click what you want (nothing is written yet) and **Apply changes** writes only what you changed, after one confirmation that lists it. **Revert** goes back to what the car has.
+
+- **Natives are checked before every action**: the tool finds the game functions by name in a table for GTA V 1.57 and refuses to run if the table does not agree with the game.
+- **Save to garage** (on by default, personal cars only) makes the game keep the look when the car is saved, writes the options whose place in the garage slot is known and asks the game to save. The options that are not written there are applied to the car and the game keeps them when it saves the car.
+- A **diamond** on a colour means it is not obtainable in that category (sheet "Color Shenanigans"). It does not block anything.
+- The **Garage Slot** category has advanced tools to find where an option is saved in the garage.
+- What you change is seen by the other players of the session, and what is saved in the garage is saved in your account: **use a cheap car for your first tests.** Chameleon paints belong to the Expanded and Enhanced version of the game and may not exist on PS4 1.57.
 
 ## Debug tab
 
@@ -70,12 +82,18 @@ pint   1234                      5        a packed integer by index
 
 ## Credits
 
-- **jdm_drlft**: this tool, including the **Names** tab (`Names/NamesRtm.cs`, MIT, see `LICENSE-NamesRTM`).
+- **jdm_drlft**: this tool, including the **Names** tab (`Names/NamesRtm.cs`, MIT, see `LICENSE-NamesRTM`) and the **Vehicle** tab (`Ui/VehiclePanel.cs` and the `Vehicle` folder).
 - **yAmethxst**: the original **Arise - RTM** this tool is based on (v2.0.0, MIT, copyright notice in `LICENSE`): https://github.com/Amethxst/Arise-RTM-GTAV-PS4 · [X](https://x.com/yAmethxst) · [Discord](https://amethxst.dev/discord)
 - **ps4debug-NG** by OpenSourcerer (OSR), maintained by Pharaoh2k: https://github.com/Pharaoh2k/ps4debug-NG. `ps4debug.bin` is v1.3.4 of this payload (see `ps4debug-NG-SOURCE.txt`), licensed GPL-3.0. Its own thanks go to golden, Ctn, SiSTRo, DeathRGH and Pharaoh2k.
 - **GoldHEN** by SiSTRo: https://ko-fi.com/sistro/shop
 - **afterglow** by well0nez/m0zz: https://well0nez.github.io/afterglow-web/
 - `libdebug`: the C# client library used to talk to ps4debug, by golden (jogolden): https://github.com/jogolden/ps4debug
+- **XB36Hazard**: author of the **GTA V Save Editor**. The pictures of the chameleon paints, the wheels and the number plates of the Vehicle tab are cropped from screenshots of the galleries of his editor, and the names and groups of the colours and wheels come from it. They are his; they are only used as pictures of the options.
+- **Velora** (menu for PS4): the table of native names and addresses for GTA V 1.57 (`lua/natives.lua`) the Vehicle tab is generated from.
+- **Seren** (Serendipity GTAO Mod Menu): reading its code showed how the personal vehicles are found in the game's data. No code of it is included.
+- **DurtyFree** ([gta-v-data-dumps](https://github.com/DurtyFree/gta-v-data-dumps)): names and values of the 161 base colours.
+- **Official Nugzz Crew**: the "Color Shenanigans" sheet, source of the diamonds (HighDutchMan89, 420Corruption and Fam Bam are thanked in it).
+- **GTA Wiki** (chameleon paint numbers) and the **RAGE Multiplayer Wiki** (horn indexes).
 
 Full details in [CREDITS.txt](CREDITS.txt).
 

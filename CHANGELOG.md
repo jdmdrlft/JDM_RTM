@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.4 - JDM - RTM
+
+### Added
+- **Vehicle tab** (made by jdm_drlft: `Ui/VehiclePanel.cs` and the `Vehicle/` folder). It edits the look of the car you drive, or of the last car you drove when you are on foot. Categories on the left, a gallery of options on the right, a **Search** box, **Read vehicle**, **Revert** and one **Apply changes** button: you choose in as many categories as you want, and a single confirmation lists everything that will change. Only what you changed is written. The result of every action appears in the box below the gallery, so the gallery never changes under you.
+  - **Paint**: Respray Primary, Secondary, Pearlescent, Interior Color, Rim Color and Dashboard Color. The 161 base colours are grouped and named like the GTA V Save Editor (Chrome, Hidden, Matte, Metallic, Metals, Other, Rim, Util, Worn). The 62 **chameleon paints** (161-222) are also in Primary, Secondary, Pearlescent, Interior and Dashboard, with their pictures. Primary and Secondary have a custom RGB strip. A **diamond** on a tile means that colour is not obtainable in that category, following the "Color Shenanigans" sheet (the Metallic group is not built in: see `colour_availability.csv` in HOW_TO_USE.md).
+  - **Lights and glass**: Neon Layout (left, right, front, back), Neon Color, Headlights (xenon and colour), Tire Smoke (colours, a custom RGB strip and **Patriotic**), Windows (tint).
+  - **Wheels**: Front Rims and Rear Rims show the wheels of 10 wheel types with their names and pictures (Tuner, Track, SUV, Street, Sport, Race, Offroad, Muscle, Lowrider, High End). Choosing one sets the wheel type and the wheel. Benny's and bike wheels are not in the gallery.
+  - **Plate**: 13 plate styles with their pictures. **Plate Text** accepts up to 8 characters of any kind, has a **GHOST PLATE** button (8 spaces) and a field for raw bytes in hex.
+  - **Mods**: Armor, Brakes, Engine, Horn, Suspension, Transmission, Turbo, Livery and every other mod type the car has. The horns have their names for the first 35 (indexes 0-34); the rest are shown as "Horn N" because their order is not confirmed.
+  - The natives are found **by name** in a table of addresses for GTA V 1.57 (`Vehicle/NativeAddresses.cs`) and are **checked automatically before every action**: the table must agree with the 7 stat handlers of the profile and every native must start like a handler. If not, nothing is run. There is no check button.
+  - The tab reads the car by itself when it is opened. If you press **Apply changes** in another car, nothing is changed: the new car is read and you choose again.
+- **Save to garage** (check box, on by default, personal cars only): sets the flag the game puts on a car modded in a mod shop (`Veh_Modded_By_Player`, with the value of `Player_Vehicle`), writes straight into the slot of the car in your garage the options whose cell is known (plate style and text, primary, secondary, pearlescent, rim colour, front wheel, wheel type, window tint, custom primary RGB, neon RGB) and asks the game to save (it uses **Save after write** of the toolbar). Every cell is checked before it is written: it must hold what the car had when you read it. A plate is only written to the garage when the game accepted it on the car.
+- **Garage Slot** category (advanced): **Snapshot**, **Auto test**, **Compare** and **Dump slot** to find where an option is saved in the garage slot of a car. Auto test changes the car with a fixed set of unusual values: use a cheap car.
+- Optional file `colour_availability.csv` (or `.tsv` / `.txt`) next to the program: the sheet exported or pasted, to complete and correct the diamonds. See HOW_TO_USE.md.
+- `HOW_TO_USE.md`, a guide for the whole program and the Vehicle tab.
+
+### Changed
+- Tabs: Main, Names, **Vehicle**, Debug. The window title says v1.4.
+- The program is bigger (about 2.5 MB): the pictures of the wheels, plates and chameleon paints and the table of native addresses are inside `JDM - RTM.exe`.
+- `README.md` and `CREDITS.txt` have the new material and the credits for the images (XB36Hazard) and the data used.
+
+### Things to know
+- The changes of the Vehicle tab are seen by the other players of the session. What is saved in the garage is saved in your account.
+- Chameleon paints belong to the Expanded and Enhanced version of the game. On PS4 1.57 they may not exist and the car can look wrong: try them first without Save to garage.
+- Tested by jdm_drlft on firmware 14.02 with GTA V 1.57 (EU).
+
+### Files of the Arise code that were touched
+`MainForm.cs` (the Vehicle tab and the title), `StatEngine.cs` (a few helpers: `AddressBase`, `HandlerAddresses`, `GetExecutableRegions`, `ScratchOutput` and `CallAddress`, which only runs a native found in the game code and starting like a handler), the project file (version, the embedded pictures and `HOW_TO_USE.md`), `README.md`, `CREDITS.txt` and this file. New files: `Ui/VehiclePanel.cs`, `Vehicle/NativeAddresses.cs`, `Vehicle/PaintColours.cs`, `Vehicle/PaintGroups.cs`, `Vehicle/ChameleonSwatches.cs`, `Vehicle/ColourAvailability.cs`, `Vehicle/WheelPictures.cs` and `Vehicle/wheels.zip`.
+
 ## 1.3 - JDM - RTM
 
 ### Changed
