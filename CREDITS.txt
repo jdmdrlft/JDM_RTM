@@ -66,12 +66,42 @@ Table of native addresses (Vehicle/NativeAddresses.cs)
 
 Garage slot layout
   How the personal vehicles are found in the script globals (the table of global pages, the list of known array starts, the cell of the model
-  and the cell of the plate) was learnt by reading the code of the Seren plugin (Serendipity GTAO Mod Menu). No code of it is included. The rest
-  of the cells (plate style, colours, wheels, tint, RGB values) were found with the Garage Slot tool of this program.
+  and the cell of the plate) was learnt by reading the code of the Seren plugin (Serendipity GTAO Mod Menu). No code of it is included. The names,
+  the starts and the sizes of the garages of the Garage Editor tab (and the place of the garage map in the script globals) and the
+  way a new saved car is created (the start values of the cells of a slot, the model stat of the slot, the garage map and its packed stats) were learnt
+  from the same plugin as data of the game. No code of it is included. The rest of the cells (plate style, colours, wheels, tint, RGB values) were found with the Garage Slot tool of this program.
+
+Tattoos
+  Unlock all tattoos and the Tattoo Editor tab work like the ones of the Seren plugin: which stats it writes (MPx_TATTOO_FM_UNLOCKS, _VIEWED and
+  _CURRENT), the bit of each shop tattoo (its place in the shop + 129), how the torso is split by update group, and the address of the text native
+  (GET_FILENAME_FOR_AUDIO_CONVERSATION, 0x9E0A80; the Velora table had it wrong) were learnt by reading the code of that plugin. No code of it is included.
+  The conditions of the award tattoos and the list of tattoo pictures (tattoo_images/index.txt) come from the GTA wiki:
+  https://gta.fandom.com/wiki/Tattoo_Parlors/GTA_Online (its own terms). The pictures are not part of the program.
+  English names, labels and prices of the tattoos by overlay: https://github.com/root-cause/v-tattoos (its own terms), and the prices of
+  pedOverlayCollections.json of https://github.com/DurtyFree/gta-v-data-dumps. They are in tattoo_images/pictures.txt, not in the program.
+  Tattoo artwork with a clear background (tattoo_images/art): https://www.fivemad.com/tools/decorations, the work of fivemad.com.
+  It is downloaded by each user for their own use with tattoo_images/download_fivemad.ps1 and is not part of the program.
+  The bits, labels and overlays of the 67 base tattoos were read from the decompiled tattoo_shop script of the game:
+  https://github.com/calamity-inc/GTA-V-Decompiled-Scripts. Only that data is in the program, no code of the script.
+
+Stats options
+  Max CEO cash, Arena lvl 1000 and Unlock Pegasus write the stats and packed stats of the matching options of the Seren plugin,
+  read from its code (the names and values only; no code of it is included). The office cash rules (packed int 7666) were checked in
+  the decompiled freemode and am_mp_property_int scripts.
+  Unlock all writes the stats of the Recovery (unlock all) of the Explosive SPRX mod menu, read from the menu file (the names and values
+  only, without the ones that can break a character; no code of it is included). Its skills and clothes are the "Max All Skills" and
+  "All clothes" of the Seren plugin, read from its code (names, indexes and values only).
+  Unlock properties is the "Own All Property Slots" of the Seren plugin, and Give all weapons and Max ammo are its "Edit weapons"
+  options (the stats, indexes, values and natives they use, read from its code; no code of it is included).
+  Arena lvl 1000 writes the values of the "Arena tier level 1000" of the Explosive SPRX mod menu, read from the menu file. The custom paint cells of a saved car (cells 71-73,
+  bits 12 and 13 of cell 77) were read from the decompiled freemode script.
 
 Colours
   Names, order and RGB values of the 161 base colours: the vehicleColors.json of https://github.com/DurtyFree/gta-v-data-dumps (it keeps its
-  own terms). Chameleon paint numbers (161-222): GTA Wiki, "Vehicle Customization in GTA V / Respray Colors".
+  own terms). The names of the car models shown by the Garage Editor tab and
+  the number of mod options of each model come from the vehicles.json and the vehicleModKits.json of the same repository. Chameleon paint numbers (161-222): GTA Wiki, "Vehicle Customization in GTA V / Respray Colors".
+  Diamonds (colours not obtainable in a category): the sheet "Color Shenanigans" by Official Nugzz Crew (https://linktr.ee/Officialnugzzcrew;
+  shout outs in the sheet to HighDutchMan89, 420Corruption and Fam Bam).
 
 Horns and plates
   Indexes and names of the first 35 horns: RAGE Multiplayer Wiki, "Vehicle Mods" (https://wiki.rage.mp/wiki/Vehicle_Mods).

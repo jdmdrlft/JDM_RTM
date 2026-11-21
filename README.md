@@ -1,8 +1,8 @@
 # JDM - RTM
 
-Outfit, name and vehicle editor, fast run unlock and custom K/D for **GTA V Online 1.57 on PS4**, run from your PC.
+Outfit, name and vehicle editor, fast run unlock, custom K/D and LS Car Meet / Arena War level 1000 for **GTA V Online 1.57 on PS4**, run from your PC.
 
-Made by **jdm_drlft**. Version **1.5**.
+Made by **jdm_drlft**. Version **1.8.42**.
 
 Based on **[Arise - RTM](https://github.com/Amethxst/Arise-RTM-GTAV-PS4)** by **yAmethxst** (v2.0.0, [release](https://github.com/Amethxst/Arise-RTM-GTAV-PS4/releases/tag/v2.0.0)), used under its MIT license: see `LICENSE` and `CREDITS.txt`. Full thanks to him for the tool this one grows from: [GitHub](https://github.com/Amethxst/Arise-RTM-GTAV-PS4) · [X](https://x.com/yAmethxst) · [Discord](https://amethxst.dev/discord) · [amethxst.dev](https://amethxst.dev).
 
@@ -16,6 +16,7 @@ It includes the **Names** tab, the **Vehicle** tab, the **Garage Editor** tab an
 - **Teleport**: a button that moves your character straight to the clothing shop.
 - **Fast run**: unlocks the permanent fast run on the character you choose.
 - **Custom K/D**: set the K/D ratio, or the kills and deaths on their own.
+- **Level 1000** (new in 1.6.1): **LSCM lvl 1000** sets the LS Car Meet reputation and **Arena lvl 1000** sets the Arena War tier of the character you choose to level 1000.
 - **Names tab**: reads and writes the names of your organization, office, MC club, clubhouse, yacht, nightclub, acid lab, acid lab product and mansion pets. It has colour, bold, italic, size and symbol buttons with a live preview that follows the game's rules, and shows how many bytes the name uses (up to 41). The new name is saved in your game; **only you see it**: other players keep seeing the name approved by Rockstar. It connects by itself when you press **2. CONNECT GTAV**, always uses the **Stats character** (Character 1 or 2) chosen in the toolbar at the top (it has no character buttons of its own: until you choose one it asks you to), and writes its messages in this window's log (lines starting with `Names:`).
 - **Vehicle tab**: edits the look of the car you drive (or the last car you drove) with galleries and one **Apply changes** button. Paint (161 colours grouped like the GTA V Save Editor, 62 chameleon paints, custom RGB), neon, xenon, tire smoke (with Patriotic), window tint, wheels of 10 types with pictures, 13 plate styles with pictures, plate text of any character (with a **GHOST PLATE** button), horns and the other mods. **Save to garage** makes the game keep the look and writes the plate, colours and wheels straight into the slot of the car in your garage. It can also **add any game vehicle to a garage** of your character (category Vehicle, with an undo). See [HOW_TO_USE.md](HOW_TO_USE.md) and the section below.
 - **Garage Editor tab** (new in 1.5, by jdm_drlft): it reads your garages by itself when you open it and lists them (apartments, offices, clubhouse, hangar...) with the cars in each one. Choose a garage, then a car, and edit it with the same kind of menu as Vehicle **without taking it out**. Only the options whose place in the saved car is known are there (plate, colours, interior, dashboard, rims, tint, neon colour, headlights, turbo, tyre smoke with its colour, engine, brakes, transmission, suspension, armor, horn, livery and the other mods of each model); a copy of the slot is kept and **Undo garage** puts it back.
@@ -45,7 +46,7 @@ Firmware **14.02**: `ps4debug.bin` v1.3.4 adds support for it. A ps4debug that i
 ### Notes
 
 - The outfit editor works on the character currently loaded in the game. Press **Refresh** after going online or after changing character.
-- Fast run and K/D need **Character 1** or **Character 2** chosen in the toolbar: the buttons stay disabled until then. Change session to see the new values.
+- Fast run, K/D and the level 1000 buttons need **Character 1** or **Character 2** chosen in the toolbar: the buttons stay disabled until then. Change session to see the new values.
 - Debug tab: values are written straight to the game, with no check. A wrong value or list can damage your character or your account, so use lists from sources you trust. "Check a list" reads a file and tells you what is in it without writing anything. A long list shows its progress and can be stopped with **Cancel**.
 - `ps4debug.bin` is sent to the console automatically when it is not running yet.
 - To look at the whole window without a console, start it with `--preview`. Nothing can be written in that mode.
@@ -92,6 +93,16 @@ pint   1234                      5        a packed integer by index
 ```
 
 `MP_` at the start of a name means the character you chose. Any other name is used as typed. `#` starts a comment.
+
+## Build from source
+
+On Windows, install the **.NET SDK 8** and the **.NET Framework 4.8.1 Developer Pack**, open the source folder (in VS Code, Visual Studio or a terminal) and run:
+
+```
+dotnet build
+```
+
+The program is made in `bin\Debug\net481\`, with `ps4debug.bin` and the other files it needs next to it. `dotnet build -c Release` makes the release build in `bin\Release\net481\`.
 
 ## Credits
 
